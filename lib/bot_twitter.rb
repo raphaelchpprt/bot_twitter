@@ -28,6 +28,7 @@ end
 #Follow the last 20 users who twitted withe the #bonjour_monde
 client.search("#bonjour_monde", result_type: "recent").take(20).collect do |tweet|
   client.follow tweet.user
+  puts "followed : " + tweet.user
 end
 
 
@@ -41,5 +42,7 @@ end
 
 client_stream.filter(track: "#bonjour_monde") do |tweet|
   client.fav tweet #like the tweet
+  puts "liked :" + tweet
   client.follow tweet.user #follow the user who tweeted
+  puts "followed : " + tweet.user
 end
